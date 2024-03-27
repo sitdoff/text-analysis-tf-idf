@@ -1,3 +1,5 @@
+Текстовый файл считается корпусом документов, в котором документы разделены символом переноса строки.
+
 ```bash
 git clone https://github.com/sitdoff/text-analysis-tf-idf.git
 cd text-analysis-tf-idf
