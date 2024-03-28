@@ -33,7 +33,7 @@ class CreateReport:
         Retuns a corpus of documents
         """
         decoded_file = file_object.read().decode()
-        documents = [document for document in decoded_file.split("\n") if document]
+        documents = [document for document in decoded_file.split("\n") if document.strip()]
         return documents
 
     @staticmethod
@@ -84,6 +84,8 @@ class CreateReport:
                 word_info[document_index]["count"] += words[word]
             word_info[document_index]["tf"] = (
                 word_info[document_index]["count"] / word_info[document_index]["word_count"]
+                if word_info[document_index]["word_count"]
+                else 0
             )
 
         return word_info
