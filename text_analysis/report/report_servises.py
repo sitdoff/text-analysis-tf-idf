@@ -36,6 +36,13 @@ class CreateReport:
         documents = [document for document in decoded_file.split("\n") if document]
         return documents
 
+    @staticmethod
+    def get_document_key(document: str, words: int = 4) -> str:
+        """
+        Returns a string with the specified number of first words in the document.
+        """
+        return " ".join(document.split()[:words]) + " ..."
+
     def get_words_in_documents(self) -> list[list[str]]:
         """
         Returns a list of lists of words from documents
@@ -44,13 +51,6 @@ class CreateReport:
         for i in range(len(self.documents)):
             words_in_documents.append([self.words[j] for j in self.word_presence_matrix[i].indices])
         return words_in_documents
-
-    @staticmethod
-    def get_document_key(document, words: int = 4) -> str:
-        """
-        Returns a string with the specified number of first words in the document.
-        """
-        return " ".join(document.split()[:words]) + " ..."
 
     def get_count_of_words_in_documents(self) -> dict:
         """
