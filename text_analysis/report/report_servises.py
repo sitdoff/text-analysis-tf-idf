@@ -108,16 +108,16 @@ class CreateReport:
         Collects information about documents into a dictionary.
         """
         self.analyze()
-
+        num_documents = len(self.documents)
         word_data = {}
         for word, count in zip(self.words, self.word_count_per_document):
             document_counter = sum(document_words.count(word) for document_words in self.words_in_documents)
             word_info = self.get_word_info_per_document(word)
             word_data[word] = {
                 "count": count,
-                "documents_count": len(self.documents),
+                "documents_count": num_documents,
                 "documents_with_word": document_counter,
-                "idf": math.log10(len(self.documents) / document_counter),
+                "idf": math.log10(num_documents / document_counter),
                 "word_info": word_info,
             }
 
