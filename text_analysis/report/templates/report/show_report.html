@@ -41,7 +41,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for _, word_info in data.word_info.items %}
+                                        {% for word_info in data.word_info.values %}
                                             <tr>
                                                 <td class="text-left">"{{ word_info.document_key }}"</td>
                                                 <td class="text-center">{{ word_info.word_count }}</td>
